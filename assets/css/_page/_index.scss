@@ -1,14 +1,14 @@
 .page {
   position: relative;
-  max-width: 800px;
+  max-width: 900px;
   width: 60%;
-  margin: 0 auto;
-
-  [data-header-desktop] & {
-    padding-top: var(--header-height);
+  margin: auto auto;
+  padding-top: 4rem;
+  [header-desktop] & {
+    padding-top: $header-height + 1rem;
   }
 
-  [data-header-desktop=normal] & {
+  [header-desktop=normal] & {
     padding-top: 0;
   }
 
@@ -19,4 +19,3 @@
 @import "_special";
 @import "_archive";
 @import "_home";
-@import "_404";

@@ -19,6 +19,11 @@
 }
 
 @media only screen and (max-width: 960px) {
+  html {
+    font-size: $global-font-size-mobile;
+    line-height: $global-line-height-mobile;
+  }
+
   #toc-auto {
     display: none;
   }
@@ -28,6 +33,8 @@
   }
 
   .page {
+    font-size: $global-font-size-mobile + 0.1rem;
+    line-height: $global-line-height-mobile + 0.2rem;
     width: 80%;
   }
 
@@ -49,14 +56,18 @@
     overflow: hidden;
   }
 
+  .container {
+    margin: 0 .8rem;
+  }
+
   .page {
     width: 100%;
 
-    [data-header-mobile] & {
-      padding-top: var(--header-height);
+    [header-mobile] & {
+      padding-top: $header-height;
     }
 
-    [data-header-mobile=normal] & {
+    [header-mobile=normal] & {
       padding-top: 0;
     }
 

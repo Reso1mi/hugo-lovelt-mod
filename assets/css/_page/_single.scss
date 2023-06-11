@@ -1,23 +1,26 @@
 @import "../_partial/_single/toc";
+@import "../_partial/links";
 
 .single {
   .single-title {
-    margin: 2rem 0 .5rem;
-    font-size: 1.6rem;
+    margin: 1rem 0 .5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     line-height: 140%;
   }
 
   .single-subtitle {
-    margin: .5rem 0;
+    margin-bottom: .7rem;
     font-size: 1.2rem;
     font-weight: normal;
+    font-style: italic;
     line-height: 100%;
   }
 
   .post-meta {
     font-size: .875rem;
     color: $global-font-secondary-color;
+    margin-bottom: .4rem;
 
     span {
       display: inline-block;
@@ -28,10 +31,6 @@
     }
 
     @include link(false, true);
-
-    .author {
-      font-size: 1.05rem;
-    }
   }
 
   .featured-image {
@@ -51,8 +50,10 @@
   }
 
   .content {
+    margin-top: 1.2rem;
+
     > h2 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
 
       & code {
         font-size: 1.25rem;
@@ -89,7 +90,7 @@
     h5,
     h6 {
       font-weight: bold;
-      margin: 1.2rem 0;
+      margin: 1.8rem 0 1rem;
 
       [theme=dark] & {
         font-weight: bolder;
@@ -116,8 +117,12 @@
       content: "#";
     }
 
+    > h4 > .header-mark::before {
+      content: ">";
+    }
+
     p {
-      margin: .5rem 0;
+      margin: 0.9rem 0.2rem;
     }
 
     b, strong {
@@ -136,6 +141,41 @@
       [theme=dark] & b, [theme=dark] & strong {
         color: $single-link-color-dark;
       }
+
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    // hyperlink style
+    a.post-link::after {
+        content: '';
+        width: 35%;
+        height: 2px;
+        display: block;
+        margin-top: -.4em;
+        background-color: rgb(28, 127, 184);
+        transition: all cubic-bezier(.77,0,.18,1) 400ms;
+    }
+
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      > a.post-link::after {
+          content: '';
+          width: 35%;
+          height: 2px;
+          display: block;
+          margin-top: 0em;
+          background-color: rgb(28, 127, 184);
+          transition: all cubic-bezier(.77,0,.18,1) 400ms;
+      }
+    }
+    
+    a.post-link:hover::after {
+        width: 100%;
     }
 
     [theme=dark] a:hover b, [theme=dark] a:hover strong {
@@ -149,22 +189,6 @@
 
     ul {
       list-style-type: disc;
-    }
-
-    ruby {
-      background: $code-background-color;
-
-      rt {
-        color: $global-font-secondary-color;
-      }
-
-      [theme=dark] & {
-        background: $code-background-color-dark;
-
-        rt {
-          color: $global-font-secondary-color-dark;
-        }
-      }
     }
 
     .table-wrapper {
@@ -230,11 +254,14 @@
 
       img {
         display: block;
-        width: 100%;
         height: auto;
         margin: 0 auto;
         overflow: hidden;
       }
+    }
+
+    .lazyloading {
+      @include object-fit(none);
     }
 
     blockquote {
@@ -263,12 +290,7 @@
     }
 
     @import "../_partial/_single/code";
-    @import "../_partial/_single/instagram";
     @import "../_partial/_single/admonition";
-    @import "../_partial/_single/echarts";
-    @import "../_partial/_single/mapbox";
-    @import "../_partial/_single/music";
-    @import "../_partial/_single/bilibili";
 
     hr {
       margin: 1rem 0;
@@ -290,7 +312,7 @@
       @include border-radius(3px);
       @include box-shadow(inset 0 -1px 0 $global-border-color);
       font-size: .8rem;
-      font-family: var(--code-font-family);
+      font-family: $code-font-family;
       color: $code-color;
 
       [theme=dark] & {
@@ -306,41 +328,12 @@
       height: 1.25em;
       vertical-align: text-bottom;
     }
-
-    .person-mention.h-card {
-      display: inline-block;
-      img {
-        vertical-align: -12%;
-        max-height: 1.1em;
-        margin-right: 0ex;
-        border-radius: 50%;
-      }
-    }
   }
 
   @import "../_partial/_single/footer";
-  @import "../_partial/_single/comment";
-}
-
-.typeit {
-  .highlight {
-    padding: .375rem;
-    font-size: .875rem;
-    font-family: var(--code-font-family);
-    font-weight: bold;
-    word-break: break-all;
-    white-space: pre-wrap;
-  }
-
-  --ti-cursor-font-family: var(--global-font-family);
-  --ti-cursor-font-size: var(--global-font-size);
-  --ti-cursor-font-weight: var(--global-font-weight);
-  --ti-cursor-line-height: var(--global-line-height);
-  --ti-cursor-color: $global-font-secondary-color;
-  --ti-cursor-margin-left: 0;
-
-  [theme=dark] & {
-    --ti-cursor-color: $global-font-secondary-color-dark;
+  
+  #comments {
+    padding: 4rem 0 2rem;
   }
 }
 
